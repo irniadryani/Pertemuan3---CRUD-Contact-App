@@ -65,7 +65,14 @@ yargs.command({
     }
 
     // menampilkan seluruh data dalam array contacts / file contacts.json
-    console.log(JSON.stringify(contacts, null, 2));
+    // contacts.forEach(contact => {
+    //   console.log(`Name: ${contact.nama}, Phone: ${contact.notelp}`);
+    // });
+
+    let filteredData = contacts.map(({ nama, notelp }) => ({ nama, notelp }));
+    console.log(JSON.stringify(filteredData, null, 2));
+
+    // console.log(JSON.stringify(contacts, null, 2));
   },
 });
 
@@ -137,7 +144,7 @@ yargs.command({
         id: contactData.id,
         nama: contactData.nama,
         email: contactData.email,
-        noTelp: contactData.noTelp,
+        notelp: contactData.notelp,
       };
 
       // masukan hasil input / data sebelumnya kedalam satu const
@@ -145,7 +152,7 @@ yargs.command({
         id: argv.id,
         nama: argv.nama !== undefined ? argv.nama : oldData.nama,
         email: argv.email !== undefined ? argv.email : oldData.email,
-        noTelp: argv.notelp !== undefined ? argv.notelp : oldData.noTelp,
+        notelp: argv.notelp !== undefined ? argv.notelp : oldData.notelp,
       };
 
       // cari contact data yang memiliki id selain params id
